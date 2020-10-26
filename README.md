@@ -27,6 +27,7 @@ default backend - 404controlplane
 
 ## Adding a domain
 
+ingress-rules.yml
 ```
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
@@ -62,6 +63,7 @@ spec:
 
 ## Adding a secret
 
+ingress-rules.yml
 ```
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
@@ -88,6 +90,7 @@ spec:
             servicePort: 80
 ```
 
+myapp-secret.yml
 ```
 apiVersion: v1
 kind: Secret
