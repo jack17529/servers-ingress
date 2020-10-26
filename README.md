@@ -62,3 +62,40 @@ spec:
 
 ## Adding a secret
 
+```
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: server-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  tls:
+  - hosts:
+    - myapp.com
+    secretName: myapp-secret-tls
+  rules:
+    - host: myapp.com
+      http:
+        paths:
+        - path: /httpd
+          backend:
+            serviceName: httpd
+            servicePort: 80
+        - path: /nginx
+          backend:
+            serviceName: nginx
+            servicePort: 80
+```
+
+```
+apiVersion: v1
+kind: Secret
+metadata:
+  name: myapp-secret-tls
+  namespace: default
+data:
+  tls.crt: base64 encoded cert
+  tls.key: base64 encoded key
+type: kubernetes.io/tls
+```
