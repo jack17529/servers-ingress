@@ -1,4 +1,7 @@
-Shows how you can establish path based routing with ingress rules for nginx server and httpd server using nginx ingress controller. I have used helm for installing nginx ingress controller.
+# servers-ingress
+
+Shows how you can establish path based routing with ingress rules for nginx server and httpd server using nginx ingress controller. 
+I have used helm for installing nginx ingress controller.
 
 ## Steps
 
