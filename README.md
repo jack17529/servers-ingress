@@ -24,3 +24,41 @@ will show the nginx webpage.
 15. controlplane $ `curl 10.105.21.105`  
 default backend - 404controlplane  
 17. `kubectl create -f ingress.yml`  
+
+## Adding a domain
+
+```
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: server-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: subdomain1.myapp.com
+    http:
+      paths:
+      - path: /httpd
+        backend:
+          serviceName: httpd
+          servicePort: 80
+      - path: /nginx
+        backend:
+          serviceName: nginx
+          servicePort: 80
+   - host: subdomain2.myapp.com
+     http:
+      paths:
+      - path: /httpd
+        backend:
+          serviceName: httpd
+          servicePort: 80
+      - path: /nginx
+        backend:
+          serviceName: nginx
+          servicePort: 80
+```
+
+## Adding a secret
+
